@@ -339,7 +339,7 @@ Additionally, AI assistance was used to convert the article, originally written 
             
             if (!waiting_for_radius) {
                 if (spiral_mode && orbit_radius > calculateBHRadius(BH_mass)) {
-                    orbit_radius *= 0.999;  // spiral in gradually
+                    orbit_radius *= 0.99;  // spiral in gradually
                     display_orbital_radius = orbit_radius * display_scale;
                     angular_velocity = calculateAngularOrbitalVelocity(orbit_radius, BH_mass);
                 }
