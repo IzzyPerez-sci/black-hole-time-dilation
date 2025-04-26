@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Black Hole Time Dilation</title>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 2rem;
+      background-color: black;
+      color: white;
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    h1, h2 {
+      color: white;
+    }
+    img {
+      display: block;
+      margin: 2rem auto;
+      max-width: 100%;
+      border: 2px solid white;
+    }
+    figcaption {
+      text-align: center;
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+      color: #ccc;
+    }
+    canvas {
+      display: block;
+      margin: 2rem auto;
+      border: 2px solid #444;
+    }
+    a {
+      color: #88f;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Black Hole Time Dilation</h1>
+<p style="text-align: center; font-style: italic; margin-top: -1rem;">Written by Izzy Perez for Black Holes 2030</p>
+<h2>Introduction</h2>
+<p>There is a way to time travel! Well, kind of. It’s not about jumping into the past to change history or avoid a speeding ticket. Instead, Einstein predicts that if you travel faster or sit near something more massive than someone else, you will age less than them. Time moves differently depending on speed and gravity.</p>
+<p>You might recognize this effect in one of the most iconic space science fiction films of our time: <em>Interstellar</em>. In one of the most memorable scenes, astronauts on a humanity-saving mission land on a wave-covered planet orbiting a supermassive black hole. When they return to their ship just a few hours later, their crewmates, who stayed further from the black hole, have aged decades. Praised for its use of real science (thanks to Nobel Prize-winning physicist Kip Thorne, who consulted on the film), this scene is not just fiction. In this article, we’ll dive deep into the gravitational well and explore the facets of this version of time travel.</p>
+
+<figure>
+  <img src="miller_planet.gif" alt="Miller's Planet">
+  <figcaption>A scene from Interstellar landing on Miller’s planet</figcaption>
+</figure>
+
+<h2>Speed Time Dilation</h2>
+<p>When you move really fast, you will age more slowly compared to someone standing still. The time dilation equation describes this effect:</p>
+
+<p style="text-align: center;">
+$$\Delta t = \frac{\Delta t_0}{\sqrt{1 - \frac{v^2}{c^2}}}$$
+</p>
+
+<p>\(\Delta t_0\) is the change in time you experience traveling near the speed of light.<br>
+\(\Delta t\) is the time someone who is standing still would measure time passing.<br>
+\(v\) is your velocity as a fraction of the speed of light.<br>
+\(c\) is the speed of light.</p>
+
+<p>Let's say that you travel for 10 seconds at 90% the speed of light, 22 seconds would be experienced by the person standing still, watching you.</p>
+
+<p>It is one thing to write out the equations and have the math be sound. It is another thing entirely to actually observe the effects you just calculated. As crazy as this seems, we use speed time dilation. Particles that decay quickly, such as muons or lithium ions, can be accelerated by a partical accelerator to speeds close to the speed of light. To an outside observer (the scientist), the particle takes longer to decay. This gives scientists more time to study them.</p>
+
+<figure>
+  <img src="particle_accelerator.jpeg" alt="Particle Accelerator">
+  <figcaption>The Large Hadron Particle Accelerator<br>Source: <a href="https://www.scientificamerican.com/article/einsteins-time-dilation-prediction-verified/" target="_blank">Scientific American</a></figcaption>
+</figure>
+
+<h2>Gravitational Time Dilation</h2>
+<p>It turns out, gravity also causes time dilation. Imagine a marble sitting on a stretched sheet of fabric. It causes a small dent in the fabric. A black hole is so massive that it sinks the fabric down to a point infinitely deep. When you are next to a black hole, you are sitting in this well. Spacetime is stretched and curved around you. This stretching slows down the passage of time, so someone far away will see you aging more slowly than themselves. The equation describing the time dilation caused by a massive object is this:</p>
+
+<p style="text-align: center;">
+$$\Delta t_0 = \Delta t \sqrt{1 - \frac{2GM}{rc^2}}$$
+</p>
+
+<p>\(\Delta t_0\) is the time you experience near the black hole,<br>
+\(\Delta t\) is the time someone far away would measure,<br>
+\(M\) is the mass of the object,<br>
+\(r\) is the distance to the object’s center, and<br>
+\(G\) is the gravitational constant.</p>
+
+<p>This time dilation effect has also been tested by scientists. In the paper "Resolving the gravitational redshift across a millimetre-scale atomic sample," researchers showed that even over just a few millimeters in height, clocks tick at slightly different speeds. Even Earth's weak gravity causes a measurable difference in time because one is closer to Earth and experiences slightly more gravity than the one clock above it. Even with masses the size of Earth, gravitational time dilation can be observed.</p>
+
+<figure>
+  <img src="Gravity_well.jpg" alt="Gravity Well">
+  <figcaption>The gravity well caused by a black hole<br>Source: <a href="https://www.nature.com/scitable/blog/thebeyond/what_happens_to_matter_inside/" target="_blank">Nature</a></figcaption>
+</figure>
+
+<h2>Combining the Two</h2>
+<p>When you hover near a black hole, gravity pulls so strongly that you would eventually fall in unless you are moving fast enough to stay in orbit. To maintain a steady orbit, you need to travel at a speed dictated by Kepler's laws, just like the moon orbits Earth. But near a black hole, orbits get extreme. You end up moving at fractions of the speed of light while sitting deep inside the gravitational well.</p>
+<canvas id="gameCanvas" width="750" height="750"></canvas>
+<p>Now, two forms of time dilation are happening at once: one from your speed and one from the gravitational pull. It is not as simple as just adding the effects together, because spacetime itself is curved in a way that mixes both speed and gravity into a single formula. Solving the Schwarzschild metric gives an equation that accounts for both effects:</p>
+
+<p style="text-align: center;">
+$$\Delta t_0 = \Delta t \sqrt{1 - \frac{3GM}{rc^2}}$$
+</p>
+
+<p>This is the equation I used for the time dilation simulation you see here. Try experimenting with it. You will notice that the closer you get to the black hole, the more extreme the time dilation becomes. Can you reach a time dilation factor of 60,000, like the one seen in Interstellar? No! Anywhere close enough for that would put you inside the innermost stable circular orbit, or ISCO. The ISCO is the point where the gravitational well becomes so steep that a circular orbit is no longer possible. If you cross it, you spiral into the black hole.</p>
+
+<p>So what gives? Is Kip Thorne a fraud? (Spoiler: no, he literally won a Nobel Prize.)</p>
+
+<h2>Interstellar and Kerr Black Holes</h2>
+<p>It turns out there is a way to shrink the ISCO of a black hole and orbit closer, experiencing even more time dilation. The trick is to make the black hole spin. A spinning black hole is called a Kerr black hole.</p>
+
+<p>Kerr black holes wind up spacetime and cause something called frame dragging. This is where spacetime itself is twisted around in the direction of the black hole’s spin. Frame dragging vastly complicates the equations of spacetime around the black hole, making the math extremely difficult. However, one thing we know for sure is that spinning black holes shrink the ISCO. This lets you orbit closer and possibly experience gravitational time dilation as extreme as what is shown in Interstellar.</p>
+
+<p>Did Kip Thorne work out all the complex math behind Kerr black holes? No. It would have been too complicated to solve by hand. However, he used real black hole physics, such as the fact that spin shrinks the ISCO, to design a scientifically accurate situation where extreme time dilation could realistically happen.</p>
+
+<figure>
+  <img src="black_hole.gif" alt="NASA Black Hole Simulation">
+  <figcaption>A NASA-generated simulation of a black hole<br>Source: <a href="https://nerdist.com/article/nasas-new-black-hole-visualization-is-straight-out-of-interstellar/" target="_blank">Nerdist</a></figcaption>
+</figure>
+
+<h2>Conclusion</h2>
+<p>Black holes create some of the most extreme time dilation effects in the universe. Near a non-spinning black hole, time dilation increases as you get closer, but it is limited by the innermost stable circular orbit (ISCO). To push time dilation even further, a spinning Kerr black hole shrinks the ISCO, allowing orbits much closer to the event horizon. However, even today, no one has fully solved the time dilation equation for an object traveling near the speed of light, deep within a gravitational well, while also experiencing frame dragging from a spinning black hole.</p>
+
+<p>The math is incredibly complex and difficult to do by hand. But we live in the age of advanced computing power. If someone puts their mind to it, we might finally solve this equation to make even more accurate simulations, and to gain a deeper understanding of how spacetime behaves in the most extreme environments.</p>
+
+<h2>Sources</h2>
+<ul>
+  <li><a href="https://www.nobelprize.org/prizes/physics/2017/thorne/facts/" target="_blank">Kip Thorne - Nobel Prize</a></li>
+  <li><a href="https://www.scientificamerican.com/article/einsteins-time-dilation-prediction-verified/" target="_blank">Particle Accelerator</a></li>
+  <li><a href="https://www.nature.com/scitable/blog/thebeyond/what_happens_to_matter_inside/" target="_blank">Black Hole Gravitational Well Diagram</a></li>
+  <li><a href="https://www.nature.com/articles/s41586-021-04349-7" target="_blank">Resolving the Gravitational Redshift</a></li>
+  <li><a href="https://people.uncw.edu/hermanr/Interstellar/Time_Dilation.pdf" target="_blank">Time Dilation - Dr. R. L. Herman</a></li>
+  <li><a href="https://www.youtube.com/watch?v=ABFGKdKKKyg" target="_blank">Let's Reproduce the Calculations from Interstellar</a></li>
+  <li><a href="https://nerdist.com/article/nasas-new-black-hole-visualization-is-straight-out-of-interstellar/" target="_blank">NASA Black Hole GIF</a></li>
+</ul>
+
+<h2>AI Acknowledgement</h2>
+<p>
+The original simulation code was written in Python using Pygame. Claude.AI was used to help convert the simulation into a web-supported version using JavaScript. 
+Additionally, AI assistance was used to convert the article, originally written in Google Docs, into this HTML format.
+</p>
+
+<!-- your JavaScript simulation goes below here -->
+
+  <!-- 🔧 Paste your JavaScript below -->
+    <script>
+        // Initialize canvas and context
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        // Game dimensions
+        const width = 750;
+        const height = 750;
+        const centerX = width / 2;
+        const centerY = height / 2;
+        
+        // Constants
+        const G = 6.67430e-11;
+        const c = 299792458;
+        
+        // Orbit parameters
+        let BH_mass = 1e36;
+        let display_scale = 0.00000005;
+        let orbit_radius = 1;
+        let display_orbital_radius = orbit_radius * display_scale;
+        let angle = 0;
+        let angular_velocity = calculateAngularOrbitalVelocity(orbit_radius, BH_mass);
+        let BH_radius_px = calculateBHRadius(BH_mass) * display_scale;
+        let time_dilation_factor = 1;
+        let spiral_mode = false;
+        let fell_in = false;
+        
+        // Input variables
+        let radius_input = "";
+        let waiting_for_radius = true;
+        
+        // Time tracking
+        let orbit_start_time = null;
+        let elapsed_orbit_time = 0;
+        let final_player_time = 0;
+        let final_outside_time = 0;
+        
+        // Game state
+        let running = true;
+        let orbit_ended = false;
+        
+        // UI elements
+        const leave_button_rect = { x: 550, y: 20, width: 165, height: 40 };
+        const try_leave_button_rect = { x: 480, y: 20, width: 260, height: 40 };
+        const try_again_button_rect = { x: width / 2 - 60, y: height / 2 + 120, width: 140, height: 40 };
+        
+        // Images
+        const background = new Image();
+        background.src = "backround.png"; // Make sure this file exists
+        
+        const spaceship = new Image();
+        spaceship.src = "spaceship.webp"; // Make sure this file exists
+        
+        // Functions
+        function calculateAngularOrbitalVelocity(radius, BH_mass) {
+            return Math.sqrt(G * BH_mass / Math.pow(radius, 3));
+        }
+        
+        function calculateBHRadius(BH_mass) {
+            return 2 * G * BH_mass / (c * c);
+        }
+        
+        function calculateTimeElapseOutside(local_time, radius, BH_mass) {
+            const factor = 1 / Math.sqrt(1 - (3 * G * BH_mass) / (radius * c * c));
+            return local_time * factor;
+        }
+        
+        function calculateISCO(BH_mass) {
+            return 3 * calculateBHRadius(BH_mass);
+        }
+        
+        function formatTime(seconds) {
+            const time_units = [
+                { name: "year", seconds: 365 * 24 * 3600 },
+                { name: "day", seconds: 24 * 3600 },
+                { name: "hour", seconds: 3600 },
+                { name: "minute", seconds: 60 },
+                { name: "second", seconds: 1 }
+            ];
+            
+            for (const unit of time_units) {
+                if (seconds >= unit.seconds) {
+                    const value = seconds / unit.seconds;
+                    const rounded = Math.round(value * 10) / 10;
+                    const plural = rounded !== 1 ? 's' : '';
+                    return `${rounded} ${unit.name}${plural}`;
+                }
+            }
+            
+            return `${seconds} seconds`;
+        }
+        
+        function titleScreen() {
+            ctx.fillStyle = "black";
+            ctx.fillRect(0, 0, width, height);
+            
+            ctx.font = "24px Arial";
+            ctx.fillStyle = "white";
+            ctx.textAlign = "center";
+            
+            ctx.fillText("Black Hole Orbit Simulator", width / 2, 180);
+            ctx.fillText("Press any key to start", width / 2, 370);
+            
+            return new Promise(resolve => {
+                function handleKeyDown(e) {
+                    document.removeEventListener('keydown', handleKeyDown);
+                    document.removeEventListener('mousedown', handleMouseDown);
+                    resolve();
+                }
+                
+                function handleMouseDown(e) {
+                    document.removeEventListener('keydown', handleKeyDown);
+                    document.removeEventListener('mousedown', handleMouseDown);
+                    resolve();
+                }
+                
+                document.addEventListener('keydown', handleKeyDown);
+                document.addEventListener('mousedown', handleMouseDown);
+            });
+        }
+        
+        function drawRect(rect, color) {
+            ctx.fillStyle = color;
+            ctx.fillRect(rect.x, rect.y, rect.width, rect.height);
+        }
+        
+        function isPointInRect(x, y, rect) {
+            return x >= rect.x && x <= rect.x + rect.width && 
+                y >= rect.y && y <= rect.y + rect.height;
+        }
+        
+        function drawTextCentered(text, x, y, color = "white") {
+            ctx.fillStyle = color;
+            ctx.fillText(text, x, y);
+        }
+        
+        function drawButton(rect, text, color) {
+            drawRect(rect, color);
+            
+            ctx.fillStyle = "white";
+            ctx.textAlign = "center";
+            ctx.textBaseline = "middle";
+            
+            drawTextCentered(text, rect.x + rect.width / 2, rect.y + rect.height / 2);
+            
+            ctx.textAlign = "left";
+            ctx.textBaseline = "alphabetic";
+        }
+        
+        function showEndScreen() {
+            ctx.fillStyle = "black";
+            ctx.fillRect(0, 0, width, height);
+            
+            ctx.font = "24px Arial";
+            ctx.fillStyle = "white";
+            ctx.textAlign = "center";
+            
+            if (fell_in) {
+                drawTextCentered("You fell into the black hole,", width / 2, height / 2 - 60);
+                drawTextCentered("with no hopes of leaving.", width / 2, height / 2 - 30);
+                drawTextCentered("Try an orbit outside the innermost stable orbit.", width / 2, height / 2);
+                
+                drawButton(try_again_button_rect, "TRY AGAIN", "rgb(0, 100, 200)");
+            } else {
+                drawTextCentered("You left orbit.", width / 2, height / 2 - 40);
+                
+                const final_player_timeformatted = formatTime(final_player_time);
+                drawTextCentered(`Time in orbit: ${final_player_timeformatted}`, width / 2, height / 2);
+                
+                const final_outside_timeformatted = formatTime(final_outside_time);
+                drawTextCentered(`${final_outside_timeformatted} have passed.`, width / 2, height / 2 + 40);
+                
+                drawTextCentered(`Time dilation factor: ${time_dilation_factor.toFixed(2)}`, width / 2, height / 2 + 80);
+                
+                drawButton(try_again_button_rect, "TRY AGAIN", "rgb(0, 100, 200)");
+            }
+        }
+        
+        function showOrbit() {
+            // Draw background
+            ctx.drawImage(background, 0, 0, width, height);
+            
+            // Calculate orbital positions
+            const s_x = centerX + display_orbital_radius * Math.cos(angle) - 25;
+            const s_y = centerY + display_orbital_radius * Math.sin(angle) - 25;
+            
+            if (!waiting_for_radius && !orbit_ended) {
+                if (orbit_radius > calculateBHRadius(BH_mass)) {
+                    angle += angular_velocity / frameRate;
+                }
+            }
+            
+            if (!waiting_for_radius) {
+                if (spiral_mode && orbit_radius > calculateBHRadius(BH_mass)) {
+                    orbit_radius *= 0.9999;  // spiral in gradually
+                    display_orbital_radius = orbit_radius * display_scale;
+                    angular_velocity = calculateAngularOrbitalVelocity(orbit_radius, BH_mass);
+                }
+            }
+            
+            // Draw black hole
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, BH_radius_px, 0, Math.PI * 2);
+            ctx.fillStyle = "black";
+            ctx.fill();
+            
+            // Draw ISCO
+            const ISCO_radius = calculateISCO(BH_mass);
+            const ISCO_radius_pixels = ISCO_radius * display_scale;
+            const number_dashes = 100;
+            
+            ctx.strokeStyle = "yellow";
+            ctx.beginPath();
+            
+            for (let i = 0; i < number_dashes; i++) {
+                const theta1 = (2 * Math.PI / number_dashes) * i;
+                const theta2 = (2 * Math.PI / number_dashes) * (i + 0.5);
+                
+                const x1 = centerX + ISCO_radius_pixels * Math.cos(theta1);
+                const y1 = centerY + ISCO_radius_pixels * Math.sin(theta1);
+                const x2 = centerX + ISCO_radius_pixels * Math.cos(theta2);
+                const y2 = centerY + ISCO_radius_pixels * Math.sin(theta2);
+                
+                ctx.moveTo(x1, y1);
+                ctx.lineTo(x2, y2);
+            }
+            
+            ctx.stroke();
+            
+            // Draw spaceship
+            ctx.drawImage(spaceship, s_x, s_y, 50, 50);
+            
+            if (!spiral_mode) {
+                // Display orbital speed
+                const orbital_speed = angular_velocity * orbit_radius;
+                const fraction_of_c = orbital_speed / c * 100;
+                
+                ctx.font = "24px Arial";
+                ctx.fillStyle = "white";
+                ctx.textAlign = "left";
+                ctx.fillText(`Orbital Speed: ${fraction_of_c.toFixed(2)}% the speed of light`, 10, 30);
+                
+                // Display timer
+                if (orbit_start_time !== null) {
+                    const formatted_orbit_time = formatTime(elapsed_orbit_time);
+                    ctx.fillText(`Time in orbit: ${formatted_orbit_time}`, 10, 60);
+                }
+            }
+            
+            if (spiral_mode) {
+                // Draw try to leave orbit button
+                drawButton(try_leave_button_rect, "TRY TO LEAVE ORBIT", "rgb(200, 0, 0)");
+            } else {
+                // Draw leave orbit button
+                drawButton(leave_button_rect, "LEAVE ORBIT", "rgb(200, 0, 0)");
+            }
+        }
+        
+        function showRadiusInput() {
+            // Draw background
+            ctx.drawImage(background, 0, 0, width, height);
+            
+            // Draw background box
+            const box_width = 600;
+            const box_height = 300;
+            const box_x = width / 2 - box_width / 2;
+            const box_y = 120;
+            
+            ctx.fillStyle = "black";
+            ctx.fillRect(box_x, box_y, box_width, box_height);
+            
+            // Black hole stats
+            ctx.font = "24px Arial";
+            ctx.fillStyle = "white";
+            ctx.textAlign = "center";
+            
+            ctx.fillText(`Black Hole Mass: ${BH_mass.toExponential(1)} kg`, width / 2, 170);
+            ctx.fillText(`Schwarzschild Radius: ${calculateBHRadius(BH_mass).toExponential(2)} m`, width / 2, 200);
+            
+            // Prompt text
+            ctx.fillText("Enter the radius at which you want to orbit (in meters):", width / 2, 260);
+            
+            // Input box
+            const input_box_width = 400;
+            const input_box_height = 32;
+            const input_box = {
+                x: width / 2 - input_box_width / 2,
+                y: 270,
+                width: input_box_width,
+                height: input_box_height
+            };
+            
+            ctx.strokeStyle = "white";
+            ctx.strokeRect(input_box.x, input_box.y, input_box.width, input_box.height);
+            
+            // Input text
+            ctx.textAlign = "left";
+            ctx.fillText(radius_input, input_box.x + 5, input_box.y + 25);
+        }
+        
+        function resetGame() {
+            orbit_ended = false;
+            waiting_for_radius = true;
+            radius_input = "";
+            orbit_radius = 1;
+            display_orbital_radius = orbit_radius * display_scale;
+            angular_velocity = calculateAngularOrbitalVelocity(orbit_radius, BH_mass);
+            angle = 0;
+            elapsed_orbit_time = 0;
+            final_player_time = 0;
+            final_outside_time = 0;
+            spiral_mode = false;
+            fell_in = false;
+        }
+        
+        // Event listeners
+        canvas.addEventListener('click', (event) => {
+            const rect = canvas.getBoundingClientRect();
+            const mouseX = event.clientX - rect.left;
+            const mouseY = event.clientY - rect.top;
+            
+            if (orbit_ended) {
+                if (isPointInRect(mouseX, mouseY, try_again_button_rect)) {
+                    resetGame();
+                }
+            } else if (!waiting_for_radius) {
+                if (spiral_mode && isPointInRect(mouseX, mouseY, try_leave_button_rect)) {
+                    orbit_ended = true;
+                    fell_in = true;
+                } else if (isPointInRect(mouseX, mouseY, leave_button_rect)) {
+                    final_player_time = elapsed_orbit_time;
+                    final_outside_time = calculateTimeElapseOutside(final_player_time, orbit_radius, BH_mass);
+                    time_dilation_factor = final_outside_time / final_player_time;
+                    orbit_ended = true;
+                }
+            }
+        });
+        
+        document.addEventListener('keydown', (event) => {
+            if (waiting_for_radius) {
+                if (event.key === 'Enter') {
+                    try {
+                        orbit_radius = parseFloat(radius_input);
+                        display_orbital_radius = orbit_radius * display_scale;
+                        angular_velocity = calculateAngularOrbitalVelocity(orbit_radius, BH_mass);
+                        
+                        // Check if within ISCO
+                        const ISCO_radius = calculateISCO(BH_mass);
+                        spiral_mode = orbit_radius < ISCO_radius;
+                        
+                        // Start game
+                        radius_input = "";
+                        waiting_for_radius = false;
+                        
+                        // Start timer
+                        orbit_start_time = Date.now();
+                    } catch (error) {
+                        radius_input = "Invalid input";
+                    }
+                } else if (event.key === 'Backspace') {
+                    radius_input = radius_input.slice(0, -1);
+                } else if (/^[0-9e.+-]$/.test(event.key)) {
+                    radius_input += event.key;
+                }
+            }
+        });
+        
+        // Game loop
+        const frameRate = 60;
+        let lastTime = 0;
+        
+        function gameLoop(timestamp) {
+            if (!lastTime) lastTime = timestamp;
+            const deltaTime = timestamp - lastTime;
+            
+            if (deltaTime >= 1000 / frameRate) {
+                // Update elapsed time
+                if (!waiting_for_radius && !orbit_ended && orbit_start_time !== null) {
+                    elapsed_orbit_time += 1 / frameRate;
+                }
+                
+                // Render based on game state
+                if (orbit_ended) {
+                    showEndScreen();
+                } else if (waiting_for_radius) {
+                    showRadiusInput();
+                } else {
+                    showOrbit();
+                }
+                
+                lastTime = timestamp;
+            }
+            
+            if (running) {
+                requestAnimationFrame(gameLoop);
+            }
+        }
+        
+        // Start the game
+        async function startGame() {
+            await titleScreen();
+            requestAnimationFrame(gameLoop);
+        }
+        
+        startGame();
+    </script>
+
+</body>
+</html>
