@@ -389,7 +389,7 @@ Additionally, AI assistance was used to convert the article, originally written 
                 
                 // Display timer
                 if (orbit_start_time !== null) {
-                    const formatted_orbit_time = formatTime(elapsed_orbit_time);
+                    const formatted_orbit_time = formatTime(Math.round(elapsed_orbit_time));
                     ctx.fillText(`Time in orbit: ${formatted_orbit_time}`, 10, 60);
                 }
             }
