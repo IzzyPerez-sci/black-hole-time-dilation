@@ -144,9 +144,7 @@ The original simulation code was written in Python using Pygame. Claude.AI was u
 Additionally, AI assistance was used to convert the article, originally written in Google Docs, into this HTML format.
 </p>
 
-<!-- your JavaScript simulation goes below here -->
 
-  <!-- 🔧 Paste your JavaScript below -->
     <script>
         // Initialize canvas and context
         const canvas = document.getElementById('gameCanvas');
@@ -341,7 +339,7 @@ Additionally, AI assistance was used to convert the article, originally written 
             
             if (!waiting_for_radius) {
                 if (spiral_mode && orbit_radius > calculateBHRadius(BH_mass)) {
-                    orbit_radius *= 0.9999;  // spiral in gradually
+                    orbit_radius *= 0.999;  // spiral in gradually
                     display_orbital_radius = orbit_radius * display_scale;
                     angular_velocity = calculateAngularOrbitalVelocity(orbit_radius, BH_mass);
                 }
